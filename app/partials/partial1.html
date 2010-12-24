@@ -1,0 +1,22 @@
+<p>{{foo}}</p>
+
+<ul class="news">
+    <li ng-repeat="event in stream">
+        <div ng-show="event.type == 'PushEvent'">
+            <div class="title"><a href="#">{{event.actor.login}}</a> pushed to {{event.payload.ref}} at {{event.repo.name}}</div>
+            <div>{{event.payload.head}} {{event.payload.commits[0].message}} </div>
+        </div>
+        <div ng-show="event.type == 'DeleteEvent'">
+            {{event.actor.login}} deleted {{event.payload.ref_type}} {{event.payload.ref}} at {{event.repo.name}}
+        </div>
+        <div ng-show="event.type == 'IssuesEvent'">Issue Event</div>
+        <div ng-show="event.type == 'IssueCommentEvent'">
+            <div>{{event.actor.login}} commented on issue {{event.payload.issue.number}} on {{event.repo.name}}</div>
+            <blockquote>{{event.payload.comment.body}} </blockquote>
+        </div>
+        <div ng-show="event.type == 'PullRequestEvent'">Pull Request Event</div>
+        <div ng-show="event.type == 'Watch Event'">Watch Event</div>
+    </li>
+</ul>
+
+
