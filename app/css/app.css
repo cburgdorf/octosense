@@ -12,8 +12,17 @@ ul.news{
     color: #666;
 }
 
+.news pre, .news code {
+    font-family: Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;
+    font-size: 90%;
+}
+
 .news .title{
     font-weight: bold;
+}
+
+.news .title span {
+    background-color: #FFF6A9;
 }
 
 .news a{
