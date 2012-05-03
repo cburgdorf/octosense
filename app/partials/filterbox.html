@@ -3,7 +3,7 @@
     <form>
         <ul>
             <li ng-repeat="project in projects">
-               {{project}}  <input type="checkbox" ng-model="repositories.emberJS">
+               {{project.name}}  <input type="checkbox" ng-model="project.show">
             </li>
         </ul>
     </form>

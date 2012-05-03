@@ -30,7 +30,19 @@ function MyCtrl1($scope, $browser) {
                                 .groupBy(function(item){
                                     return item.repo.name;
                                 })
-                                .map(function(x) { return x[0].repo.name;})
+                                .map(function(x) {
+                                    return {
+                                        name: x[0].repo.name,
+                                        show: true
+                                    };
+                                })
+                                .reduce(function(acc, value){
+                                    acc[value.name] = {
+                                        name: value.name,
+                                        show: true
+                                    };
+                                    return acc;
+                                }, {})
                                 .value();
         });
     });
@@ -50,12 +62,8 @@ function MyCtrl1($scope, $browser) {
     $scope.repositories = { emberJS: false};
 
     $scope.filterByProject = function(item){
-
-        if ($scope.repositories.emberJS)
-            return item.repo.name.indexOf('ember') > -1;
-        else
-            return true;
-    }
+        return $scope.projects[item.repo.name] && $scope.projects[item.repo.name].show;
+    };
 
 }
 MyCtrl1.$inject = ['$scope', '$browser'];
