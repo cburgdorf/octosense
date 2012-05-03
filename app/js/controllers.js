@@ -30,15 +30,10 @@ function MyCtrl1($scope, $browser) {
                                 .groupBy(function(item){
                                     return item.repo.name;
                                 })
-                                .map(function(x) {
-                                    return {
-                                        name: x[0].repo.name,
-                                        show: true
-                                    };
-                                })
-                                .reduce(function(acc, value){
-                                    acc[value.name] = {
-                                        name: value.name,
+                                .reduce(function(acc, groupedValues){
+                                    var name = groupedValues[0].repo.name;
+                                    acc[name] = {
+                                        name: name,
                                         show: true
                                     };
                                     return acc;
