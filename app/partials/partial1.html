@@ -1,5 +1,6 @@
+<div ng-include src="'partials/filterbox.html'"></div>
 <ul class="news">
-    <li ng-repeat="event in stream">
+    <li ng-repeat="event in stream | filter:filterByProject">
         <div ng-show="event.type == 'PushEvent'">
             <div class="title"><a href="#">{{event.actor.login}}</a> pushed to {{event.payload.ref}} at {{event.repo.name}}</div>
             <div class="details">

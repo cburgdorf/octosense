@@ -1,0 +1,10 @@
+<div>
+    {{projects}}
+    <form>
+        <ul>
+            <li ng-repeat="project in projects">
+               {{project}}  <input type="checkbox" ng-model="repositories.emberJS">
+            </li>
+        </ul>
+    </form>
+</div>

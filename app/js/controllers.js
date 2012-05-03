@@ -25,6 +25,13 @@ function MyCtrl1($scope, $browser) {
         console.log(data);
         $scope.$apply(function(){
             $scope.stream = data;
+
+            $scope.projects =  _.chain(data)
+                                .groupBy(function(item){
+                                    return item.repo.name;
+                                })
+                                .map(function(x) { return x[0].repo.name;})
+                                .value();
         });
     });
 
@@ -34,7 +41,21 @@ function MyCtrl1($scope, $browser) {
             console.log(data);
         });*/
 
+    $scope.doFoo = function(){
+        console.log($scope.test)
+    };
+
     $scope.foo = "blubb";
+
+    $scope.repositories = { emberJS: false};
+
+    $scope.filterByProject = function(item){
+
+        if ($scope.repositories.emberJS)
+            return item.repo.name.indexOf('ember') > -1;
+        else
+            return true;
+    }
 
 }
 MyCtrl1.$inject = ['$scope', '$browser'];
