@@ -38,6 +38,12 @@ ul.news{
 
 /* filter-bar styles*/
 
+#username{
+    margin: 25px 53px 0px 53px;
+    width: 200px;
+    height: 30px;
+}
+
 .filter-bar{
     background: #4183C4;
 }

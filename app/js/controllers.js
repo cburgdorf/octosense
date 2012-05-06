@@ -4,49 +4,40 @@
 
 function StreamController($scope, $browser) {
 
-    $scope.stream = [{type:"foo"}];
+    $scope.stream = [];
+    $scope.username = "cburgdorf";
 
-    $.ajaxAsObservable({
-        url: "https://api.github.com/users/cburgdorf/received_events",
-        dataType: "jsonp"
-    })
-    .select(function(payload){
-        return payload.data.data;
-    })
-/*    .select(function(data){
-            return $.map(data, function(item){
-                return {
-                    repository: item.repo.name,
-                    message: item.payload.comment ? item.payload.comment.body : ""
-                }
-            });
-    })*/
-    .subscribe(function(data){
-        console.log(data);
-        $scope.$apply(function(){
-            $scope.stream = data;
-
-            $scope.projects =  _.chain(data)
-                                .groupBy(function(item){
-                                    return item.repo.name;
-                                })
-                                .reduce(function(acc, groupedValues){
-                                    var name = groupedValues[0].repo.name;
-                                    acc[name] = {
-                                        name: name,
-                                        show: true
-                                    };
-                                    return acc;
-                                }, {})
-                                .value();
-        });
-    });
-
-/*    Rx.Observable
-        .getJSONPRequest("https://api.github.com/users/cburgdorf/received_events")
+    $scope.refreshData = function(test){
+        $.ajaxAsObservable({
+            url: "https://api.github.com/users/" + $scope.username + "/received_events",
+            dataType: "jsonp"
+        })
+        .select(function(payload){
+            return payload.data.data;
+        })
         .subscribe(function(data){
             console.log(data);
-        });*/
+            $scope.$apply(function(){
+                $scope.stream = data;
+
+                $scope.projects =  _.chain(data)
+                    .groupBy(function(item){
+                        return item.repo.name;
+                    })
+                    .reduce(function(acc, groupedValues){
+                        var name = groupedValues[0].repo.name;
+                        acc[name] = {
+                            name: name,
+                            show: true
+                        };
+                        return acc;
+                    }, {})
+                    .value();
+            });
+        });
+    };
+
+    $scope.refreshData();
 
     $scope.doFoo = function(){
         console.log($scope.test)
