@@ -5,11 +5,10 @@
 function StreamController($scope, $browser) {
 
     $scope.stream = [];
-    $scope.username = "cburgdorf";
 
-    $scope.refreshData = function(test){
+    $scope.refreshData = function(username){
         $.ajaxAsObservable({
-            url: "https://api.github.com/users/" + $scope.username + "/received_events",
+            url: "https://api.github.com/users/" + username + "/received_events",
             dataType: "jsonp"
         })
         .select(function(payload){
@@ -36,8 +35,6 @@ function StreamController($scope, $browser) {
             });
         });
     };
-
-    $scope.refreshData();
 
     $scope.doFoo = function(){
         console.log($scope.test)
