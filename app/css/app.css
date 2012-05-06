@@ -38,10 +38,18 @@ ul.news{
 
 /* filter-bar styles*/
 
-#username{
-    margin: 25px 53px 0px 53px;
-    width: 200px;
+.username{
+    position: absolute;
+    left: 53px;
+    right: 53px;
+    top: 5px
+}
+
+.username input{
+    width: 100%;
     height: 30px;
+    font-size: 22px;
+    text-align: center;
 }
 
 .filter-bar{
@@ -51,6 +59,7 @@ ul.news{
 .filter-bar ul{
     list-style: none;
     overflow: auto;
+    padding-top: 20px;
 }
 
 .filter-bar ul li {
@@ -59,7 +68,7 @@ ul.news{
     color: #ffffff;
 }
 
-.filter-bar .project-list{
+.filter-bar .settings {
     height: 265px;
     overflow-y: auto;
     overflow-x: hidden;
@@ -83,11 +92,11 @@ ul.news{
     height: 30px;
 }
 
-.stream-view .filter-bar .project-list{
+.stream-view .filter-bar .settings {
     display: none;
 }
 
-.stream-view.expanded .filter-bar .project-list{
+.stream-view.expanded .filter-bar .settings {
     display: inherit;
 }
 

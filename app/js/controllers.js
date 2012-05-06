@@ -16,24 +16,31 @@ function StreamController($scope, $browser) {
             return payload.data.data;
         })
         .subscribe(function(data){
-            console.log(data);
-            $scope.$apply(function(){
-                $scope.stream = data;
+            if (data.message){
+                $scope.$apply(function(){
+                    $scope.stream = [];
+                    $scope.projects = [];
+                });
+            }
+            else{
+                $scope.$apply(function(){
+                    $scope.stream = data;
 
-                $scope.projects =  _.chain(data)
-                    .groupBy(function(item){
-                        return item.repo.name;
-                    })
-                    .reduce(function(acc, groupedValues){
-                        var name = groupedValues[0].repo.name;
-                        acc[name] = {
-                            name: name,
-                            show: true
-                        };
-                        return acc;
-                    }, {})
-                    .value();
-            });
+                    $scope.projects =  _.chain(data)
+                        .groupBy(function(item){
+                            return item.repo.name;
+                        })
+                        .reduce(function(acc, groupedValues){
+                            var name = groupedValues[0].repo.name;
+                            acc[name] = {
+                                name: name,
+                                show: true
+                            };
+                            return acc;
+                        }, {})
+                        .value();
+                });
+            }
         });
     };
 
