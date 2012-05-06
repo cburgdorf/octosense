@@ -53,6 +53,20 @@ ul.news{
     color: #ffffff;
 }
 
+.filter-bar .project-list{
+    height: 265px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.filter-bar .tap-hint{
+    text-align: center;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+}
+
 /*stream-view styles*/
 
 .stream-view .filter-bar {
@@ -63,11 +77,11 @@ ul.news{
     height: 30px;
 }
 
-.stream-view .filter-bar ul{
+.stream-view .filter-bar .project-list{
     display: none;
 }
 
-.stream-view.expanded .filter-bar ul{
+.stream-view.expanded .filter-bar .project-list{
     display: inherit;
 }
 
@@ -75,3 +89,10 @@ ul.news{
     height: 300px;
 }
 
+.stream-view ul.news{
+    padding-top: 20px;
+}
+
+.stream-view.expanded ul.news{
+    padding-top: 320px;
+}

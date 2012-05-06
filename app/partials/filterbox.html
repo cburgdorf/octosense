@@ -1,10 +1,15 @@
 <div class="filter-bar">
-    <form>
-        <ul>
-            <li ng-repeat="project in projects">
-               {{project.name}}  <input type="checkbox" ng-model="project.show">
-            </li>
-        </ul>
-    </form>
-    <div ng-click="toggleFilter()">Toggle View</div>
+    <div class="project-list">
+        <form>
+            <ul>
+                <li ng-repeat="project in projects">
+                   {{project.name}}  <input type="checkbox" ng-model="project.show">
+                </li>
+            </ul>
+        </form>
+    </div>
+    <div ng-switch on="showFilter" class="tap-hint" ng-click="toggleFilter()">
+        <span ng-switch-when="true"> Tap to hide filters </span>
+        <span ng-switch-when="false"> Tap to show filters </span>
+    </div>
 </div>
