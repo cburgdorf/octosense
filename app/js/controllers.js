@@ -6,6 +6,7 @@ function StreamController($scope, $browser) {
 
     $scope.stream = [];
 
+    //TODO figure out why the binding doesnt work in the traditional way
     $scope.refreshData = function(username){
         $.ajaxAsObservable({
             url: "https://api.github.com/users/" + username + "/received_events",

@@ -1,8 +1,8 @@
 <div class="filter-bar">
     <div class="project-list">
         <!--Todo get rid of hardcoding the controller here-->
-        <form ng-submit="refreshData()">
-            <input ng-change="refreshData(username)" id="username" placeholder="Enter any github user name"  type="text" name="username" ng-model="username">
+        <form ng-submit="refreshData(username)">
+            <input ng-change="refreshData(username)" id="username" placeholder="Enter any github user name" type="text" ng-model="username">
         </form>
         <!--TODO ask in angular group why we need this form tag-->
         <form>
