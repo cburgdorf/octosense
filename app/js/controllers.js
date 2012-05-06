@@ -2,7 +2,7 @@
 /* App Controllers */
 
 
-function MyCtrl1($scope, $browser) {
+function StreamController($scope, $browser) {
 
     $scope.stream = [{type:"foo"}];
 
@@ -60,8 +60,14 @@ function MyCtrl1($scope, $browser) {
         return $scope.projects[item.repo.name] && $scope.projects[item.repo.name].show;
     };
 
+    $scope.showFilter = false;
+
+    $scope.toggleFilter = function(){
+        $scope.showFilter = !$scope.showFilter;
+    };
+
 }
-MyCtrl1.$inject = ['$scope', '$browser'];
+StreamController.$inject = ['$scope', '$browser'];
 
 
 function MyCtrl2() {

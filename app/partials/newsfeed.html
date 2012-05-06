@@ -1,0 +1,30 @@
+<ul class="news">
+    <li ng-repeat="event in stream | filter:filterByProject">
+        <div ng-show="event.type == 'PushEvent'">
+            <div class="title"><a href="#">{{event.actor.login}}</a> pushed to {{event.payload.ref}} at {{event.repo.name}}</div>
+            <div class="details">
+                <img height="30" width="30" ng-src="{{event.actor.avatar_url}}">
+                <code> <a> {{event.payload.head}}</a></code> <blockquote> {{event.payload.commits[0].message}} </blockquote>
+            </div>
+        </div>
+        <div ng-show="event.type == 'DeleteEvent'">
+            <div class="title"><a href="#">{{event.actor.login}}</a> deleted {{event.payload.ref_type}} {{event.payload.ref}} at {{event.repo.name}} </div>
+        </div>
+        <div ng-show="event.type == 'IssuesEvent'">
+            <div class="title"><a href="#">{{event.actor.login}}</a> <span> {{event.payload.action}} </span> issue <a> {{event.payload.issue.number}} </a> on <a> {{event.repo.name}} </a></div>
+            <div class="details">
+                <img height="30" width="30" ng-src="{{event.actor.avatar_url}}">
+                <blockquote> {{event.payload.issue.title}} </blockquote>
+            </div>
+        </div>
+        <div ng-show="event.type == 'IssueCommentEvent'">
+            <div class="title"><a href="#">{{event.actor.login}}</a> <span> commented </span> on <a href="#"> issue {{event.payload.issue.number}} </a> on <a href="#"> {{event.repo.name}} </a> </div>
+            <div class="details">
+                <img height="30" width="30" ng-src="{{event.actor.avatar_url}}">
+                <blockquote>{{event.payload.comment.body}} </blockquote>
+            </div>
+        </div>
+        <div ng-show="event.type == 'PullRequestEvent'">Pull Request Event</div>
+        <div ng-show="event.type == 'Watch Event'">Watch Event</div>
+    </li>
+</ul>
