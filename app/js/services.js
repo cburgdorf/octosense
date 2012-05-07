@@ -7,7 +7,7 @@ App.factory('scrollService', ['$window', function($window){
                        .fromEvent($window,'scroll')
                        .throttle(200),
         endReachedPredicate = function(){
-            return $window.window.innerHeight + $window.document.body.scrollTop >= window.document.body.offsetHeight;
+            return $window.window.innerHeight + $window.document.body.scrollTop >= $window.document.body.offsetHeight;
         },
         topReachedPredicate = function() { throw "not implemented ";};
 
