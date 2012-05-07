@@ -1,7 +1,11 @@
 'use strict';
 /* App Controllers */
 
-App.controller('StreamController',['$scope',function ($scope) {
+App.controller('StreamController',['$scope','scrollService' ,function ($scope, scrollService) {
+
+    scrollService.observe('EndReached').subscribe(function(){
+        console.log("foo");
+    });
 
     $scope.stream = [];
 
