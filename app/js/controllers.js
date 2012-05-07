@@ -43,13 +43,8 @@ App.controller('StreamController',['$scope',function ($scope) {
             });
     };
 
-    $scope.doFoo = function(){
-        console.log($scope.test)
-    };
-
-    $scope.foo = "blubb";
-
-    $scope.repositories = { emberJS: false};
+    //object map of repositories for the filter to show
+    $scope.repositories = { };
 
     $scope.filterByProject = function(item){
         return $scope.projects[item.repo.name] && $scope.projects[item.repo.name].show;
