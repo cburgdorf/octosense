@@ -1,6 +1,6 @@
 <div class="filter-bar">
     <div class="settings">
-        <!--Todo get rid of hardcoding the controller here-->
+        <!--TODO ask in angular group why we can't bind the username the regular way-->
         <div class="username">
                 <form ng-submit="refreshData(username)">
                     <input ng-change="refreshData(username)" placeholder="Enter any github user name" type="text" ng-model="username">
