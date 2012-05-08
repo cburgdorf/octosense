@@ -18,3 +18,35 @@ App.factory('scrollService', ['$window', function($window){
     return self;
 
 }]);
+
+App.factory('githubService', ['$window', function($window){
+
+    self.fetchEventStream = function(username, page){
+        return $.ajaxAsObservable({
+            url: "https://api.github.com/users/" + username + "/received_events?page=" + page,
+            dataType: "jsonp"
+        })
+        .select(function(payload){
+            return payload.data.data;
+        });
+    };
+
+    self.extractProjects = function(data){
+        return _.chain(data)
+            .groupBy(function(item){
+                return item.repo.name;
+            })
+            .reduce(function(acc, groupedValues){
+                var name = groupedValues[0].repo.name;
+                acc[name] = {
+                    name: name,
+                    show: true
+                };
+                return acc;
+            }, {})
+            .value();
+    };
+
+    return self;
+
+}]);
