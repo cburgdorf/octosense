@@ -4,11 +4,13 @@
 App.controller('StreamController',['$scope','scrollService', 'githubService' ,function ($scope, scrollService, githubService) {
 
     var currentPage = 1;
-    $scope.username = "";
+
+    //https://github.com/angular/angular.js/issues/943
+    $scope.username = {value: ""};
 
     scrollService.observe('EndReached').subscribe(function(){
         currentPage++;
-        githubService.fetchEventStream($scope.username, currentPage)
+        githubService.fetchEventStream($scope.username.value, currentPage)
                      .subscribe(function(data){
                         $scope.$apply(function(){
                             angular.forEach(data, function(value){
@@ -22,11 +24,9 @@ App.controller('StreamController',['$scope','scrollService', 'githubService' ,fu
 
     $scope.stream = [];
 
-    //TODO figure out why the binding doesn't work in the traditional way
-    $scope.refreshData = function(username){
-        $scope.username = username;
+    $scope.refreshData = function(){
         githubService
-            .fetchEventStream(username, 1)
+            .fetchEventStream($scope.username.value, 1)
             .subscribe(function(data){
                 if (!resetDataIfInvalid(data)){
                     $scope.$apply(function(){
