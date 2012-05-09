@@ -10,6 +10,10 @@ ul.news{
     list-style: none;
 }
 
+.news .details img {
+    float: left;
+}
+
 .news blockquote {
     color: #666;
 }
