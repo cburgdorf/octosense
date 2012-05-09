@@ -1,9 +1,9 @@
 <div class="filter-bar">
     <div class="settings">
-        <!--Todo get rid of hardcoding the controller here-->
+        <!--HACK https://github.com/angular/angular.js/issues/943-->
         <div class="username">
-                <form ng-submit="refreshData(username)">
-                    <input ng-change="refreshData(username)" placeholder="Enter any github user name" type="text" ng-model="username">
+                <form ng-submit="refreshData()">
+                    <input ng-change="refreshData()" placeholder="Enter any github user name" type="text" ng-model="username.value">
                 </form>
         </div>
 
