@@ -16,8 +16,8 @@
             </ul>
         </form>
     </div>
-    <div ng-switch on="showFilter" class="tap-hint" ng-click="toggleFilter()">
-        <span ng-switch-when="true"> Tap to hide filters </span>
-        <span ng-switch-when="false"> Tap to show filters </span>
+    <div ng-switch on="showFilter" class="tap-hint">
+        <span ng-click="toggleFilter()" ng-switch-when="true"> Tap to hide filters </span>
+        <span ng-click="toggleFilter()" ng-switch-when="false"> Tap to show filters </span>
     </div>
 </div>
