@@ -24,7 +24,14 @@
                 <blockquote>{{event.payload.comment.body}} </blockquote>
             </div>
         </div>
-        <div ng-show="event.type == 'PullRequestEvent'">Pull Request Event</div>
+        <div ng-show="event.type == 'PullRequestEvent'">
+            <div class="title"><a href="#">{{event.actor.login}}</a>
+            <span> {{ event.payload.pull_request.state == "closed" && event.payload.pull_request.merged && "merged" || "closed" }} </span> <a href="#"> pull request {{event.payload.number}} </a> on <a href="#"> {{event.repo.name}} </a> </div>
+            <div class="details">
+                <img height="30" width="30" ng-src="{{event.actor.avatar_url}}">
+                <blockquote>{{event.payload.pull_request.title}} </blockquote>
+            </div>
+        </div>
         <div ng-show="event.type == 'Watch Event'">Watch Event</div>
     </li>
 </ul>
