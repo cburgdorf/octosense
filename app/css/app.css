@@ -10,6 +10,10 @@ ul.news{
     list-style: none;
 }
 
+.news .details img {
+    float: left;
+}
+
 .news blockquote {
     color: #666;
 }
@@ -105,7 +109,7 @@ ul.news{
 }
 
 .stream-view ul.news{
-    padding-top: 20px;
+    padding: 20px 2px 2px 2px;
 }
 
 .stream-view.expanded ul.news{

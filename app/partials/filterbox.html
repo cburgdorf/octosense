@@ -1,9 +1,9 @@
 <div class="filter-bar">
     <div class="settings">
-        <!--TODO ask in angular group why we can't bind the username the regular way-->
+        <!--HACK https://github.com/angular/angular.js/issues/943-->
         <div class="username">
-                <form ng-submit="refreshData(username)">
-                    <input ng-change="refreshData(username)" placeholder="Enter any github user name" type="text" ng-model="username">
+                <form ng-submit="refreshData()">
+                    <input ng-change="refreshData()" placeholder="Enter any github user name" type="text" ng-model="username.value">
                 </form>
         </div>
 
@@ -16,8 +16,8 @@
             </ul>
         </form>
     </div>
-    <div ng-switch on="showFilter" class="tap-hint" ng-click="toggleFilter()">
-        <span ng-switch-when="true"> Tap to hide filters </span>
-        <span ng-switch-when="false"> Tap to show filters </span>
+    <div ng-switch on="showFilter" class="tap-hint">
+        <span ng-click="toggleFilter()" ng-switch-when="true"> Tap to hide filters </span>
+        <span ng-click="toggleFilter()" ng-switch-when="false"> Tap to show filters </span>
     </div>
 </div>
