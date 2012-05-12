@@ -83,16 +83,16 @@ ul.news{
     position: fixed;
     width: 100%;
     background: inherit;
-    height: 40px;
     top: 0;
     left: 0;
     right: 0;
     text-align: center;
     color: #ffffff;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 25px;
     cursor: pointer;
-    line-height: 40px;
+    line-height: 50px;
+    height: 50px;
 }
 
 /*stream-view styles*/
