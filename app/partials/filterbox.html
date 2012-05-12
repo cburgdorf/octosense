@@ -1,12 +1,16 @@
 <div class="filter-bar">
-    <div class="settings">
-        <!--HACK https://github.com/angular/angular.js/issues/943-->
-        <div class="username">
-                <form ng-submit="refreshData()">
-                    <input ng-change="refreshData()" placeholder="Enter any github user name" type="text" ng-model="username.value">
-                </form>
-        </div>
+    <div ng-switch on="showFilter" class="tap-hint">
+        <span ng-click="toggleFilter()" ng-switch-when="true"> Tap to hide filters </span>
+        <span ng-click="toggleFilter()" ng-switch-when="false"> Tap to show filters </span>
+    </div>
 
+    <div class="settings">
+        <div class="username">
+            <!--HACK https://github.com/angular/angular.js/issues/943-->
+            <form ng-submit="refreshData()">
+                <input ng-change="refreshData()" placeholder="Enter any github user name" type="text" ng-model="username.value">
+            </form>
+        </div>
         <!--TODO ask in angular group why we need this form tag-->
         <form>
             <ul>
@@ -15,9 +19,5 @@
                 </li>
             </ul>
         </form>
-    </div>
-    <div ng-switch on="showFilter" class="tap-hint">
-        <span ng-click="toggleFilter()" ng-switch-when="true"> Tap to hide filters </span>
-        <span ng-click="toggleFilter()" ng-switch-when="false"> Tap to show filters </span>
     </div>
 </div>

@@ -1,6 +1,7 @@
 /* app css stylesheet */
 
 body{
+    margin: 0;
     font-family: Helvetica, arial, freesans, clean, sans-serif
 }
 
@@ -43,10 +44,10 @@ ul.news{
 /* filter-bar styles*/
 
 .username{
-    position: absolute;
     left: 53px;
     right: 53px;
-    top: 5px
+    top: 30px;
+    margin: 10px 30px 0px 30px;
 }
 
 .username input{
@@ -59,6 +60,14 @@ ul.news{
 .filter-bar{
     background: #4183C4;
 }
+/*
+.filter-bar .fixed{
+    position: fixed;
+    width: 100%;
+    background: #4183C4;
+    height: 40px;
+    top: 0;
+}*/
 
 .filter-bar ul{
     list-style: none;
@@ -73,23 +82,29 @@ ul.news{
 }
 
 .filter-bar .settings {
-    height: 265px;
+    margin-top: 40px;
     overflow-y: auto;
     overflow-x: hidden;
+    height: 100%;
 }
 
 .filter-bar .tap-hint{
+    position: fixed;
+    width: 100%;
+    background: inherit;
+    height: 40px;
+    top: 0;
     text-align: center;
     color: #ffffff;
     font-weight: bold;
     font-size: 20px;
     cursor: pointer;
+    line-height: 40px;
 }
 
 /*stream-view styles*/
 
 .stream-view .filter-bar {
-    position: fixed;
     left: 0;
     top: 0;
     right: 0;
@@ -105,7 +120,7 @@ ul.news{
 }
 
 .stream-view.expanded .filter-bar {
-    height: 300px;
+    height: 100%;
 }
 
 .stream-view ul.news{
@@ -113,5 +128,5 @@ ul.news{
 }
 
 .stream-view.expanded ul.news{
-    padding-top: 320px;
+    display: none;
 }
