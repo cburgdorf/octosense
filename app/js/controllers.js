@@ -9,6 +9,11 @@ App.controller('StreamController',['$scope','scrollService', 'githubService' ,fu
     $scope.username = {value: ""};
 
     scrollService.observe('EndReached').subscribe(function(){
+
+        if($scope.showFilter){
+            return;
+        }
+
         currentPage++;
         githubService.fetchEventStream($scope.username.value, currentPage)
                      .subscribe(function(data){
