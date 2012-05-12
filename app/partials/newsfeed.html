@@ -26,6 +26,7 @@
         </div>
         <div ng-show="event.type == 'PullRequestEvent'">
             <div class="title"><a href="#">{{event.actor.login}}</a>
+            <!--Poor mans ternary operator that AngularJS understands https://github.com/angular/angular.js/issues/719 -->
             <span> {{ event.payload.pull_request.state == "closed" && event.payload.pull_request.merged && "merged" || "closed" }} </span> <a href="#"> pull request {{event.payload.number}} </a> on <a href="#"> {{event.repo.name}} </a> </div>
             <div class="details">
                 <img height="30" width="30" ng-src="{{event.actor.avatar_url}}">
