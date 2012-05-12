@@ -60,14 +60,6 @@ ul.news{
 .filter-bar{
     background: #4183C4;
 }
-/*
-.filter-bar .fixed{
-    position: fixed;
-    width: 100%;
-    background: #4183C4;
-    height: 40px;
-    top: 0;
-}*/
 
 .filter-bar ul{
     list-style: none;
@@ -76,7 +68,6 @@ ul.news{
 }
 
 .filter-bar ul li {
-    float: left;
     padding: 10px;
     color: #ffffff;
 }
