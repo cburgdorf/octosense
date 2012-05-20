@@ -13,9 +13,10 @@
         </div>
         <!--TODO ask in angular group why we need this form tag-->
         <form>
+
             <ul>
                 <li ng-repeat="project in projects">
-                   <input type="checkbox" ng-model="project.show"> {{project.name}}
+                    <mobilecheckbox value="project.show" title="project.name"></mobilecheckbox>
                 </li>
             </ul>
         </form>
