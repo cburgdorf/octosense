@@ -4,7 +4,7 @@ App.directive('mobilecheckbox', function() {
         replace: true,
         template:
             '<div class="ui-checkbox">'+
-                '<label class="ui-btn ui-btn-corner-all ui-btn-icon-left ui-btn-up-c" ng-class="{\'ui-icon-checkbox-on\': value(), \'ui-icon-checkbox-off\': !value()}">'+
+                '<label class="ui-btn ui-btn-corner-all ui-btn-icon-left ui-btn-up-c" ng-class="{\'ui-checkbox-on\': value(), \'ui-checkbox-off\': !value()}">'+
                 '<span class="ui-btn-inner ui-btn-corner-all">'+
                 '<span class="ui-btn-text">{{title()}}</span>'+
                 '<span class="ui-icon ui-icon-shadow" ng-class="{\'ui-icon-checkbox-on\': value(), \'ui-icon-checkbox-off\': !value()}"> </span>'+
