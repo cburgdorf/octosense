@@ -21,7 +21,7 @@ App.controller('StreamController',['$scope','scrollService', 'githubService' ,fu
                             angular.forEach(data, function(value){
                                 $scope.stream.push(value);
                             });
-                            angular.extend($scope.projects, githubService.extractProjects(data));
+                            $scope.project = angular.extend({}, githubService.extractProjects(data), $scope.projects);
                         });
                      })
 
