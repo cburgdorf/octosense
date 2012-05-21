@@ -15,6 +15,18 @@ App.factory('scrollService', ['$window', function($window){
         return event === "EndReached" ? throttledScroll.where(endReachedPredicate) : throttledScroll.where(topReachedPredicate);
     };
 
+    self.getScrollPosition = function() {
+        var yScroll;
+        if ($window.pageYOffset) {
+            yScroll = $window.pageYOffset;
+        } else if ($window.documentElement && $window.documentElement.scrollTop) {
+            yScroll = $window.document.documentElement.scrollTop;
+        } else if ($window.document.body) {
+            yScroll = $window.document.body.scrollTop;
+        }
+        return yScroll
+    };
+
     return self;
 
 }]);
