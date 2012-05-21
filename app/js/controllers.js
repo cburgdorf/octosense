@@ -1,7 +1,7 @@
 'use strict';
 /* App Controllers */
 
-App.controller('StreamController',['$scope','scrollService', 'githubService' ,function ($scope, scrollService, githubService) {
+App.controller('StreamController',['$window', '$defer', '$scope','scrollService', 'githubService' ,function ($window, $defer, $scope, scrollService, githubService) {
 
     var currentPage = 1;
 
@@ -64,7 +64,21 @@ App.controller('StreamController',['$scope','scrollService', 'githubService' ,fu
     $scope.showFilter = false;
 
     $scope.toggleFilter = function(){
+
+        if (!$scope.showFilter){
+            $scope.scrollPosition = scrollService.getScrollPosition();
+        }
+
         $scope.showFilter = !$scope.showFilter;
+
+        if (!$scope.showFilter){
+            $defer(function(){
+                $window.scrollTo(0, $scope.scrollPosition);
+            });
+        }
+
     };
+
+    $scope.scrollPosition = 0;
 
 }]);
