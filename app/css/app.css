@@ -50,10 +50,7 @@ ul.news{
 /* filter-bar styles*/
 
 .username{
-    left: 53px;
-    right: 53px;
-    top: 30px;
-    margin: 10px 30px 0px 30px;
+    margin: 20px 30px 0px 30px;
 }
 
 .username input{
@@ -100,6 +97,7 @@ ul.news{
     line-height: 50px;
     height: 50px;
     z-index: 9999;
+    border-bottom: 2px solid #336696;
 }
 
 /*stream-view styles*/
