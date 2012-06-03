@@ -14,6 +14,7 @@ body{
 
 ul.news{
     list-style: none;
+    word-wrap: break-word;
 }
 
 .news .details img {
