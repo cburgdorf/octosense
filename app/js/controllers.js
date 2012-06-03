@@ -15,7 +15,7 @@ App.controller('StreamController',['$window', '$defer', '$scope','scrollService'
         }
 
         currentPage++;
-        githubService.fetchEventStream($scope.username.value, currentPage)
+        githubService.fetchEventStream(currentPage)
                      .subscribe(function(data){
                         $scope.$apply(function(){
                             angular.forEach(data, function(value){
@@ -30,8 +30,11 @@ App.controller('StreamController',['$window', '$defer', '$scope','scrollService'
     $scope.stream = [];
 
     $scope.refreshData = function(){
+
+        githubService.setUsername($scope.username.value);
+
         githubService
-            .fetchEventStream($scope.username.value, 1)
+            .fetchEventStream(1)
             .subscribe(function(data){
                 if (!resetDataIfInvalid(data)){
                     $scope.$apply(function(){
@@ -80,5 +83,8 @@ App.controller('StreamController',['$window', '$defer', '$scope','scrollService'
     };
 
     $scope.scrollPosition = 0;
+
+    $scope.username.value = githubService.getUsername();
+    $scope.refreshData();
 
 }]);

@@ -31,11 +31,36 @@ App.factory('scrollService', ['$window', function($window){
 
 }]);
 
-App.factory('githubService', ['$window', function($window){
+App.factory('githubService', [function(){
 
-    self.fetchEventStream = function(username, page){
+    var username = "";
+
+    self.setUsername = function(user){
+        //update the username in the localStorage
+        localStorage.setItem('octosense_username',user);
+        //but also cach it locally for further fast use
+        username = user;
+    };
+
+    self.getUsername = function(){
+
+        //Look if we already cached the username
+        if (username.length > 0)
+            return username;
+
+        //if not look if we have it in the localStorage
+        var tempUser = localStorage.getItem('octosense_username');
+        if (tempUser !== undefined && tempUser !== null && tempUser.length > 0)
+        {
+            //cache it for further use
+            username = tempUser;
+        }
+        return username;
+    };
+
+    self.fetchEventStream = function(page){
         return $.ajaxAsObservable({
-            url: "https://api.github.com/users/" + username + "/received_events?page=" + page,
+            url: "https://api.github.com/users/" + self.getUsername() + "/received_events?page=" + page,
             dataType: "jsonp"
         })
         .select(function(payload){
