@@ -16,13 +16,11 @@ App.controller('StreamController',['$window', '$defer', '$scope','scrollService'
 
         currentPage++;
         githubService.fetchEventStream(currentPage)
-                     .subscribe(function(data){
-                        $scope.$apply(function(){
-                            angular.forEach(data, function(value){
-                                $scope.stream.push(value);
-                            });
-                            $scope.project = angular.extend({}, githubService.extractProjects(data), $scope.projects);
+                     .then(function(data){
+                        angular.forEach(data, function(value){
+                            $scope.stream.push(value);
                         });
+                        $scope.project = angular.extend({}, githubService.extractProjects(data), $scope.projects);
                      })
 
     });
@@ -35,12 +33,10 @@ App.controller('StreamController',['$window', '$defer', '$scope','scrollService'
 
         githubService
             .fetchEventStream(1)
-            .subscribe(function(data){
+            .then(function(data){
                 if (!resetDataIfInvalid(data)){
-                    $scope.$apply(function(){
-                        $scope.stream = data;
-                        $scope.projects = githubService.extractProjects(data);
-                    });
+                    $scope.stream = data;
+                    $scope.projects = githubService.extractProjects(data);
                 }
             });
         currentPage = 1;
