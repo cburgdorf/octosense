@@ -47,6 +47,23 @@ ul.news{
     text-decoration: underline
 }
 
+.fetchingStream{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    border-top: 2px solid #336696;
+    height: 40px;
+}
+
+.fetchingStream .spinner{
+    background: url("../img/spinner.gif");
+    width: 32px;
+    height: 32px;
+    margin: 0 auto;
+}
+
 /* filter-bar styles*/
 
 .username{

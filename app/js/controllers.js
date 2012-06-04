@@ -8,11 +8,17 @@ App.controller('StreamController',['$window', '$defer', '$scope','scrollService'
     //https://github.com/angular/angular.js/issues/943
     $scope.username = {value: ""};
 
+    $scope.fetching = false;
+
     scrollService.observe('EndReached').subscribe(function(){
 
         if($scope.showFilter){
             return;
         }
+
+        $scope.$apply(function(){
+            $scope.fetching = true;
+        });
 
         currentPage++;
         githubService.fetchEventStream(currentPage)
@@ -21,6 +27,7 @@ App.controller('StreamController',['$window', '$defer', '$scope','scrollService'
                             $scope.stream.push(value);
                         });
                         $scope.project = angular.extend({}, githubService.extractProjects(data), $scope.projects);
+                        $scope.fetching = false;
                      })
 
     });
