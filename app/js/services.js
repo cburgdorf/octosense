@@ -31,7 +31,7 @@ App.factory('scrollService', ['$window', function($window){
 
 }]);
 
-App.factory('githubService', [function(){
+App.factory('githubService', ['$http',function($http){
 
     var username = "";
 
@@ -59,12 +59,11 @@ App.factory('githubService', [function(){
     };
 
     self.fetchEventStream = function(page){
-        return $.ajaxAsObservable({
-            url: "https://api.github.com/users/" + self.getUsername() + "/received_events?page=" + page,
-            dataType: "jsonp"
+        return $http({
+            method:"jsonp", url:"https://api.github.com/users/" + self.getUsername() + "/received_events?callback=JSON_CALLBACK&page=" + page
         })
-        .select(function(payload){
-            return payload.data.data;
+        .then(function(value){
+            return value.data.data;
         });
     };
 
