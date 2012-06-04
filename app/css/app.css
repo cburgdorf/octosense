@@ -10,6 +10,13 @@ body{
     font-family: Helvetica, arial, freesans, clean, sans-serif
 }
 
+.fat-text{
+    text-align: center;
+    font-weight: bold;
+    font-size: 25px;
+    color: #ffffff;
+}
+
 /* news styles */
 
 ul.news{
@@ -52,9 +59,11 @@ ul.news{
     bottom: 0;
     left: 0;
     right: 0;
-    background: white;
-    border-top: 2px solid #336696;
-    height: 40px;
+    background: darkgrey;
+    border-top: 2px solid grey;
+    height: 50px;
+    color: white;
+    line-height: 50px;
 }
 
 .fetchingStream .spinner{
@@ -106,10 +115,6 @@ ul.news{
     top: 0;
     left: 0;
     right: 0;
-    text-align: center;
-    color: #ffffff;
-    font-weight: bold;
-    font-size: 25px;
     cursor: pointer;
     line-height: 50px;
     height: 50px;
