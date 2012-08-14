@@ -33,7 +33,7 @@ App.factory('scrollService', ['$window', function($window){
 
 App.factory('githubService', ['$http',function($http){
 
-    var username = "";
+    var username = "", self = {};
 
     self.setUsername = function(user){
         //update the username in the localStorage
